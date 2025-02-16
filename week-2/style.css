@@ -1,0 +1,15 @@
+
+  a
+  {
+    color:red;
+    text-align: center;
+    top: 50%;
+  }
+
+  .container{
+    display: block;
+    width: auto;
+    height:650px;
+    margin-left: auto;
+    margin-right: auto;
+  }

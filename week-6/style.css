@@ -1,0 +1,8 @@
+body {
+    background-color: brown;
+}
+
+#movingImage {
+    height:100px;
+    position: absolute;
+}

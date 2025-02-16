@@ -1,0 +1,42 @@
+
+   body {
+    background-color:#c4f2a2;
+   }
+
+   h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #5c3330
+   }
+
+   p{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #5c3330
+   }
+
+   img{
+    max-width: 300px;
+   }
+   
+   .submit-btn {
+        border: 1px solid #5c3330; /* Optional: Adds a border for contrast */
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .submit-btn:hover {
+        background-color: #5c3330;
+        color: white;
+    }
+
+    .lace-banner{
+
+        background-image: url('lace.png'); /* Replace with your lace image */
+        background-repeat: repeat-x;
+        background-size: auto 350px; /* Adjust height */
+        height: 200px; /* Controls lace height */
+        width: 100%;
+        position: absolute; /* Floats over everything */
+        top: -1px;
+        left: 0;
+        z-index: 1000; /* Ensures it stays on top */
+        pointer-events: none; /* Prevents it from interfering with clicks */
+    }

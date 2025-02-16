@@ -1,0 +1,363 @@
+
+html{
+    height: 200%;
+}
+
+body{
+    background-image: url(https://img1.picmix.com/output/pic/normal/2/7/4/6/11836472_c7f5f.gif);
+    background-size:cover;
+}
+
+.text{
+    position: absolute;
+    height: 200px;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 200px;
+    transform: translate(50px, 30px);
+    border-radius: 50%;
+    z-index: 1;
+    color:#ffffff;
+    font-size: 100px;
+}
+.hair-top-back-left {
+    position: absolute;
+    height: 200px;
+    width: 200px;
+    transform: translate(450px, 30px);
+    background-color: #824f4f;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.hair-top-front-left {
+    position: absolute;
+    height: 230px;
+    width: 140px;
+    transform: translate(450px, 30px) skew(-20deg, 20deg);
+    background-color: #824f4f;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.hair-top-back-right {
+    position:absolute;
+    height: 300px;
+    width: 200px;
+    transform: translate(600px, 30px);
+    background-color: #824f4f;
+    border-radius: 50%;
+    z-index: 1;
+}
+.hair-top-front-right {
+    position:absolute;
+    height: 200px;
+    width: 100px;
+    transform: translate(720px, 80px);
+    background-color: #824f4f;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.hair-back-left{
+    position: absolute;
+    height: 500px;
+    width: 300px;
+    transform: translate(440px, 30px) skew(-30deg);
+    background-color: #824f4f;
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* my flesh*/
+.face {
+    position:absolute;
+    height: 200px;
+    width: 220px;
+    background-color: #f2d499;
+    border-radius: 50%;
+    z-index: 2;
+    transform: translate(540px, 100px) ;
+}
+
+.neck{
+    position: absolute;
+    border-bottom: 90px solid #dbb872;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	height: 0;
+	width: 40px;
+    z-index: 1;
+    transform: translate(620px,240px);
+}
+
+.arm-left{
+    position:absolute;
+    width: 180px;
+    height: 200px;
+    background-color: #dbb872;
+    clip-path: polygon(50% 0%, 18% 5%, 51% 100%);
+    transform: translate(490px, 400px);
+    z-index:2;
+}
+
+.arm-right{
+    position:absolute;
+    width: 180px;
+    height: 200px;
+    background-color: #f2d499;
+    clip-path: polygon(73% 0, 38% 0, 25% 99%);
+    transform: translate(710px, 400px);
+    z-index:2;
+}
+
+.leg-left{
+    position:absolute;
+    width: 400px;
+    height: 400px;
+    background-image: url('./fabric/tights.jpg');
+    clip-path: polygon(41% 0, 67% 0, 65% 100%, 53% 100%);
+    transform: translate(340px, 700px);
+    z-index:1;
+}
+
+.leg-right{
+    position:absolute;
+    width: 400px;
+    height: 400px;
+    background-image: url('./fabric/tights.jpg');
+    clip-path: polygon(40% 0, 68% 0, 46% 100%, 31% 100%);
+    transform: translate(500px, 700px);
+    z-index:1;
+}
+/* shared eye styles */
+
+/* NOTE: All the shapes were done by me but ChatGPT was used for organisation */
+/* I used it to teach me how to sort and organise duplicate shapes and to organise my shapes for me as well as lengthen the canvas */
+/* Chat log with ChatGPT is in the readme */
+.eye-outline {
+    position:absolute;
+    height: 100px;
+    width: 150px;
+    background-color: #000000;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.eye-white {
+    position:absolute;
+    height: 95px;
+    width: 145px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    z-index: 3;
+}
+
+.eye-pupil {
+    position:absolute;
+    height: 100px;
+    width: 100px;
+    background-color: #000000;
+    border-radius: 50%;
+    z-index: 4;
+    
+}
+
+.eye-pupil-shine {
+    position:absolute;
+    height: 60px;
+    width: 60px;
+    background-image: linear-gradient(grey, white);
+    border-radius: 50%;
+    z-index: 5;
+
+}
+
+.eye-pupil-shingg {
+    position:absolute;
+	width: 0;
+	height: 0;
+	border-top: 20px solid transparent;
+	border-right: 45px solid #000000;
+	border-bottom: 20px solid transparent;
+    z-index: 6;
+
+}
+
+.eye-outline.left {
+    transform: translate(490px, 130px);
+}
+.eye-white.left {
+    transform: translate(492.5px, 132.5px);
+}
+.eye-pupil.left{
+    transform: translate(510px, 130px);
+}
+.eye-pupil-shine.left{
+    transform: translate(530px, 140px);
+}
+.eye-pupil-shingg.left{
+    transform: translate(545px, 160px);
+}
+
+/* eye transformations right*/
+.eye-outline.right {
+    transform: translate(675px, 130px);
+}
+.eye-white.right {
+    transform: translate(677.5px, 132.5px);
+}
+.eye-pupil.right{
+    transform: translate(690px, 130px);
+}
+.eye-pupil-shine.right{
+    transform: translate(710px, 140px);
+}
+.eye-pupil-shingg.right{
+    transform: translate(725px, 160px);
+}
+
+/* torso */
+.t-shirt-torso{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    z-index: 8;
+    clip-path: polygon(34% 9%, 84% 4%, 99% 100%, 0 92%);
+	background: #555;
+    transform: translate(500px, 295px);
+    background-image: url(./fabric/greyfabric.jpg);
+    border-radius: 5%;
+}
+
+
+.t-shirt-sleeve-left{
+    position: absolute;
+    width:210px;
+    height:200px;
+    z-index:5;
+    clip-path: polygon(26% 8%, 57% 6%, 66% 48%, 0 63%);
+    background: #3b3a3a;
+    transform: translate(490px, 300px);
+}
+
+.t-shirt-sleeve-right{
+    position: absolute;
+    width:180px;
+    height:200px;
+    z-index:7;
+    clip-path: polygon(14% 22%, 66% 26%, 92% 100%, 2% 85%);
+    background: #3b3a3a;
+    transform: translate(700px, 280px);
+}
+
+/* skirt piano key classes*/
+.skirt-piano-key-white{
+    position: absolute;
+    width: 180px;
+    height: 200px;
+    clip-path: polygon(56% 2%, 98% 3%, 91% 100%, 33% 92%);
+
+
+}
+
+.skirt-piano-key-black{
+    position: absolute;
+    width: 180px;
+    height: 200px;
+    clip-path: polygon(56% 2%, 98% 3%, 91% 100%, 33% 92%);
+    background-color: #3b3a3a;
+}
+
+/* skirt piano key instances*/
+
+.skirt-piano-key-white.L1{
+    transform: translate(400px,570px);
+    background-image: url(./fabric/whitecloth.jpg);
+    z-index:2;
+}
+
+.skirt-piano-key-black.L2{
+    transform: translate(450px,570px);
+    z-index:3;
+}
+
+.skirt-piano-key-white.L3{
+    transform: translate(500px,570px);
+    background-image: url(./fabric/whitecloth.jpg);
+    z-index:4;
+}
+
+.skirt-piano-key-white.L4{
+    transform: translate(550px,570px);
+    background-color: #f2e9bd;
+    z-index:5;
+}
+
+.skirt-piano-key-black.L5{
+    transform: translate(600px,570px);
+    z-index:6;
+}
+
+.skirt-piano-key-white.L6{
+    transform: translate(650px,570px);
+    background-image: url(./fabric/whitecloth.jpg);
+    z-index:7;
+    clip-path: polygon(56% 2%, 75% 1%, 91% 100%, 33% 92%);
+}
+
+.shoe-left{
+    position: absolute;
+    width: 302px;
+    height: 264px;
+    transform: translate(400px,1000px) scale(1.5);
+    z-index: 7;
+    background-image: url('./fabric/good_morning.gif');
+}
+
+.shoe-right{
+    position: absolute;
+    background-color: #824f4f;
+    width: 300px;
+    height: 400px;
+    transform: translate(500px,1000px);
+    clip-path: polygon(10% 20%, 44% 15%, 70% 20%, 59% 49%, 78% 58%, 59% 67%, 33% 66%, 26% 56%, 17% 65%);
+    z-index: 6;
+    background-image: url(fabric/leathers1.jpg);
+    
+}
+
+.random-layer-1{
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    z-index:1;
+    background-image: url('./fabric/velvet_blue.jpg');
+    clip-path: polygon(56% 7%, 68% 23%, 62% 49%, 42% 53%, 38% 100%, 22% 88%, 13% 50%, 36% 17%);
+    transform: translate(330px,280px) skew(10deg);
+
+}
+
+.random-layer-2{
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    z-index:1;
+    background-image: url('./fabric/velvet_red.JPG');
+    clip-path: polygon(27% 1%, 64% 14%, 83% 60%, 70% 54%, 53% 100%, 41% 41%, 29% 94%, 15% 31%);
+    transform: translate(530px,300px) skew(20deg);
+
+}
+
+.random-layer-3{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    clip-path: polygon(24% 36%, 27% 0, 36% 0, 39% 73%, 25% 100%, 16% 84%);
+}
+
+.random-layer-3.one{
+    background-image:url('./fabric/unionjack2.jpg');
+    transform: translate(450px,600px);
+    z-index: 2;
+
+}

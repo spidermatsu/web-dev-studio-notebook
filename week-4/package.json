@@ -1,0 +1,26 @@
+{
+  "name": "week-4",
+  "version": "1.0.0",
+  "description": "lalala",
+  "main": "script.js",
+  "scripts": {
+    "test": "nodemon script.js",
+    "start": "node script.js"
+  },
+  "keywords": [
+    "lalala"
+  ],
+  "author": "me",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.6",
+    "node-cron": "^3.0.3",
+    "node-schedule": "^2.1.1",
+    "nodemailer": "^6.10.0"
+  }
+}
