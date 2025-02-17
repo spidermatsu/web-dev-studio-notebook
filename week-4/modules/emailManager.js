@@ -1,12 +1,12 @@
 const nodemailer = require("nodemailer");
 
-// Email sending function (requires Gmail setup in .env)
+//send email
 function sendEmail(email, magicLink) {
     let transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: process.env.EMAIL_USER, // Your Gmail
-            pass: process.env.EMAIL_PASS  // App password
+            user: process.env.EMAIL_USER, //virtua pet
+            pass: process.env.EMAIL_PASS //app passwprd
         }
     });
 
@@ -14,7 +14,7 @@ function sendEmail(email, magicLink) {
         from: process.env.EMAIL_USER,
         to: email,
         subject: "Your Magic Link",
-        text: `Click this link to access: ${magicLink} (Expires in 24 hours)`
+        text: `Click this link to access: ${process.env.URL}/pet?magicLink=${magicLink} (Expires in 24 hours)`
     };
 
     transporter.sendMail(mailOptions, (err, info) => {
@@ -25,4 +25,6 @@ function sendEmail(email, magicLink) {
     });
 }
 
-module.exports = { sendEmail }
+module.exports = {
+    sendEmail
+}

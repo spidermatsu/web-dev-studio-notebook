@@ -36,23 +36,32 @@
             </div>
         </div>
     </div>
+
+
+
     
-    <script>
-        document.getElementById("emailForm").addEventListener("submit", async function(event) {
-            event.preventDefault();
-            const email = document.getElementById("email").value;
-
-            const response = await fetch("/submit", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email })
-            });
-
-            const result = await response.text();
-            alert(result);
-        });
-    </script>
 
 </div>
 </body>
+<script>
+    document.getElementById("emailForm").addEventListener("submit", async function(event) {
+        event.preventDefault();
+        const email = document.getElementById("email").value;
+
+        let data = {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: { email: email }
+        }
+
+        const response = await fetch("/submit", {
+            method: "POST",
+            body: JSON.stringify({ email: email }),
+            headers: { "Content-Type": "application/json" }
+        });
+
+        const result = await response.text();
+        alert(result); 
+    });
+</script>
 </html>

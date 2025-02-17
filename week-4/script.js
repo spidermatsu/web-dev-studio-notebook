@@ -8,10 +8,14 @@ const emailManager = require("./modules/emailManager");
 const app = express();
 const port = 3000;
 
-// Middleware to parse form data
-app.use(express.urlencoded({ extended: true }));
+//middleware to parse form data
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(express.static("public"));
-app.use(express.json({ type: ['application/json', 'text/plain'] }))
+app.use(express.json({
+    type: ['application/json', 'text/plain']
+}))
 
 dbManager.connectDB((res) => {
     if (res == "SUCCESS") {
@@ -21,65 +25,85 @@ dbManager.connectDB((res) => {
     }
 });
 
-// Serve the HTML form
+//serve the HTML form
 app.get("/", (req, res) => {
-    res.sendFile(__dirname + "/public/index.html");
+    res.sendFile(__dirname + "/views/index.html");
 });
 
-// Handle form submission
+//handle form submission
 app.post("/submit", (req, res) => {
     const email = req.body.email;
-    console.log("Received email:", email);  // Log the received email
+    console.log("Received email:", email); // Log the received email
 
-    // Check if email is undefined or empty
+    //check if email is undefined or empty
     if (!email) {
-        console.error("❌ No email provided");
-        return res.send("⚠️ Please provide a valid email.");
+        console.error("No email provided");
+        return res.send("Please provide a valid email.");
     }
 
     dbManager.createUser(email, (result) => {
         console.log(result);
         if (result == "SUCCESS") {
-            res.send("email");
-        }
-        else {
-            res.send("error");
+            res.send("Your email has been added.");
+        } else if (result == "DUPLICATE") {
+            res.send("Your email is already added to the list")
+        } else {
+            res.send("There was an error.");
         }
     })
 });
 
 //add error handling !!!!!
-
+//make the magic link
 const generateMagicLink = async () => {
-    dbManager.getOldestUser(async (user) => {
-        if (user.magicLink){
-            dbManager.removeUser(user.email, (res) => {
-                generateMagicLink()
-            })
-        }
-        else{
-            
-            user.magicLink = 'x'
-            await user.save();
-        }
-    });
+    //get oldest user
+    try {
+        dbManager.getOldestUser(async (user) => {
+            //
+            // console.log(user)
+            if (!user) {
+                return;
+            } else if (user.magicLink) {
+                dbManager.removeUser(user.email, (res) => {
+                    generateMagicLink()
+                })
+            } else {
+
+                const chars = "1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                let string = "";
+                for (let i = 0; i <= 6; i++) {
+                    string += chars[Math.floor(Math.random() * chars.length)];
+                }
+                user.magicLink = string;
+                await user.save();
+                emailManager.sendEmail(user.email, user.magicLink)
+            }
+        });
+
+    } catch (error) {
+        console.error(`Error in generateMagicLink: ${err}`);
+        return callback("ERROR")
+    }
 
 }
+app.get("/pet", (req, res) => {
+    // console.log(req.query)
 
-// Scheduling
-
-generateMagicLink();
-
-cron.schedule('0 0 * * *', () => {
-    
-    // emailManager.sendEmail("email@example.com", "magicLink")
-
-
+    dbManager.checkMagicLink(req.query.magicLink, (magicLinkResponse) => {
+        if (magicLinkResponse == "SUCCESS") {
+            res.sendFile(__dirname + "/views/pet.html");
+        } else {
+            res.sendFile(__dirname + "/views/404.html");
+        }
+    });
 });
 
+//scheduling
+cron.schedule('0 0 * * *', () => {
+    generateMagicLink();
+});
 
-
-// Start the server
+//start the server
 mongoose.connection.once("open", () => {
     app.listen(port, () => {
         console.log(`Server running on port ${port}`);
