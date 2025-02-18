@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/loaders/GLTFLoader.js';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -9,15 +10,17 @@ if (window.innerWidth < 768) {
 	camera.updateProjectionMatrix();
 }
 
-const renderer = new THREE.WebGLRenderer();
+const renderer = new THREE.WebGLRenderer({ 
+	alpha: true, 
+	antialias: true });
 
 // change background color
 const color = new THREE.Color(0x000000);
 renderer.setClearColor(color, 1);
 renderer.setSize( window.innerWidth, window.innerHeight );
 
-
-//space geometry
+camera.position.set(0, 5, 5);
+//space geometry - from rifke's example
 const spaceGeometry = new THREE.SphereGeometry(20, 32, 32);
 
 const spaceMaterial = new THREE.MeshBasicMaterial({
@@ -35,7 +38,7 @@ space.name = 'space';
 scene.add( space );
 
 
-//earth
+//earth - from rifke's example
 const earthGeometry = new THREE.SphereGeometry(1, 128, 128);
 const earthMaterial = new THREE.MeshPhongMaterial( {
 	color: 0xffffff,
@@ -63,28 +66,77 @@ const specularMap = new THREE.TextureLoader().load('assets/2k_earth_specular_map
 const earth = new THREE.Mesh( earthGeometry, earthMaterial );
 earth.name = 'earth';
 earth.position.x = 0;
-earth.position.y = 0;
-earth.position.z = -10;
+earth.position.y = 1;
+earth.position.z = -5;
 
-const earthGroup = new THREE.Group();
-earthGroup.add(earth);
-
-scene.add( earthGroup );
+scene.add( earth );
 //persian rug
 
 const rugGeometry = new THREE.PlaneGeometry( 3, 2 );
 const rugMaterial = new THREE.MeshPhongMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
-const plane = new THREE.Mesh( rugGeometry, rugMaterial );
+const rug = new THREE.Mesh( rugGeometry, rugMaterial );
 
 const rugTexture = new THREE.TextureLoader().load('assets/persian-rug.jpg', () => {
     rugMaterial.map = rugTexture;
     rugMaterial.needsUpdate = true;
 })
-scene.add( plane )
+scene.add( rug )
+
+rug.rotation.x = -Math.PI / 2;
+
+//text plane
+
+const textGeometry = new THREE.PlaneGeometry(3, 2);
+
+const textureLoader = new THREE.TextureLoader();
+const textTexture = textureLoader.load('assets/plane-texture.png', (texture) => {
+    console.log("Texture loaded:", texture);
+    textMaterial.map = texture;
+    textMaterial.needsUpdate = true;
+});
+
+const textMaterial = new THREE.MeshBasicMaterial({ 
+    transparent: true, 
+    side: THREE.DoubleSide, 
+    alphaTest: 0.5 
+});
+
+const text = new THREE.Mesh(textGeometry, textMaterial);
+text.position.x = 0;
+text.position.y = 1.75;
+text.position.z = -2.5;
+scene.add(text);
+
+//furniture
+//three.group
+const furniture = new THREE.Group()
+
+const loader = new GLTFLoader();
+loader.load(
+    'assets/rusty_bed/scene.gltf',
+    (gltf) => {
+        const bed = gltf.scene;
+        bed.position.set(-1.75, 0, 0.75);
+        bed.scale.set(0.1, 0.1, 0.1); 
+		bed.rotation.y = -Math.PI/8;
+        furniture.add(bed);
+    }
+);
+
+loader.load(
+    'assets/indian_furniture/scene.gltf',
+    (gltf) => {
+        const iFurn = gltf.scene;
+        iFurn.position.set(1.5, -5, 0.1);
+        iFurn.scale.set(0.2, 0.2, 0.2); 
+		iFurn.rotation.y = Math.PI;
+        furniture.add(iFurn);
+    }
+);
 
 
-plane.rotation.x = -Math.PI / 2;
 
+scene.add(furniture)
 
 const light = new THREE.DirectionalLight(0xffffff, 0.4);
 light.position.set(2, 2, 2);
@@ -113,19 +165,19 @@ camera.position.z = 2;
 controls.update();
 
 //helpers
-const axesHelper = new THREE.AxesHelper(5);
-scene.add(axesHelper);
+// const axesHelper = new THREE.AxesHelper(5);
+// scene.add(axesHelper);
 
-const size = 10;
-const divisions = 10;
+// const size = 10;
+// const divisions = 10;
 
-const gridHelper = new THREE.GridHelper( size, divisions );
-scene.add( gridHelper );
+// const gridHelper = new THREE.GridHelper( size, divisions );
+// scene.add( gridHelper );
 
 const animate = () => {
 	requestAnimationFrame( animate );
 
-	earth.rotation.y += 0.001;
+	earth.rotation.y += 0.01;
 
 	controls.update();
 	renderer.render( scene, camera );

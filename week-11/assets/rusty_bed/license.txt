@@ -1,0 +1,11 @@
+Model Information:
+* title:	Rusty Bed
+* source:	https://sketchfab.com/3d-models/rusty-bed-e162e6533b224d769edb54cf55f7a62b
+* author:	UrNogness (https://sketchfab.com/UrNogness)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Rusty Bed" (https://sketchfab.com/3d-models/rusty-bed-e162e6533b224d769edb54cf55f7a62b) by UrNogness (https://sketchfab.com/UrNogness) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

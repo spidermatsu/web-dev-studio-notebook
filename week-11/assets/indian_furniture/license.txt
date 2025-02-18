@@ -1,0 +1,11 @@
+Model Information:
+* title:	Indian Furniture
+* source:	https://sketchfab.com/3d-models/indian-furniture-78fda707b826402282369d7f73bf0dba
+* author:	Asylum Nox (https://sketchfab.com/peter.pottiez)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Indian Furniture" (https://sketchfab.com/3d-models/indian-furniture-78fda707b826402282369d7f73bf0dba) by Asylum Nox (https://sketchfab.com/peter.pottiez) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

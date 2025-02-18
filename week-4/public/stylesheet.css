@@ -31,12 +31,9 @@
 
         background-image: url('lace.png'); /* Replace with your lace image */
         background-repeat: repeat-x;
-        background-size: auto 350px; /* Adjust height */
-        height: 200px; /* Controls lace height */
+        background-size: auto 350px;
         width: 100%;
-        position: absolute; /* Floats over everything */
-        top: -1px;
+        position: absolute; 
+        top: 0%;
         left: 0;
-        z-index: 1000; /* Ensures it stays on top */
-        pointer-events: none; /* Prevents it from interfering with clicks */
     }
