@@ -15,7 +15,7 @@ const currentDateTime = dt.toLocaleString();
 console.log(currentDateTime); // output: "7/20/2021, 2:28:15 PM" (will vary depending on your time zone)
 
 //https://stackoverflow.com/questions/10599148/how-do-i-get-the-current-time-only-in-javascript
-console.log(now); // 17 (will vary depending on your time zone)
+// console.log(now); 
 
 const getData = async (url) => {
     try {

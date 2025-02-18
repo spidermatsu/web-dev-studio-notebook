@@ -12,10 +12,6 @@
     font-family: Arial, Helvetica, sans-serif;
     color: #5c3330
    }
-
-   img{
-    max-width: 300px;
-   }
    
    .submit-btn {
         border: 1px solid #5c3330; /* Optional: Adds a border for contrast */
@@ -36,4 +32,12 @@
         position: absolute; 
         top: 0%;
         left: 0;
+    }
+
+    
+    #elephant1{
+        max-width: 300px;
+    }
+    #elephant2{
+        max-width: auto;
     }

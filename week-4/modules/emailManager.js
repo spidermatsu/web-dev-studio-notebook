@@ -13,8 +13,8 @@ function sendEmail(email, magicLink) {
     let mailOptions = {
         from: process.env.EMAIL_USER,
         to: email,
-        subject: "Your Magic Link",
-        text: `Click this link to access: ${process.env.URL}/pet?magicLink=${magicLink} (Expires in 24 hours)`
+        subject: "virtual pet",
+        text: `click this link to access the pet: ${process.env.URL}/pet?magicLink=${magicLink} (expires in 24 hours)`
     };
 
     transporter.sendMail(mailOptions, (err, info) => {
